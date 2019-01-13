@@ -14,7 +14,91 @@ class App extends Component {
       clicked.classList.remove("unclicked"); 
       clicked.classList.add("clicked");
       clicked.append(clicked.value);
-    }  
+
+      let hits = 1;
+
+      while (hits >= 1) {
+      
+        hits = 0;
+
+      for (let i = 1; i < 1601; i++) {
+
+        let current = document.getElementById(i);
+
+        if (current.value == "" && !current.classList.contains("bomb")) {
+
+          let neighbors = [
+            i - 40,
+            i + 1,
+            i - 1,
+            i + 40];
+
+          if (i <= 40) {
+            neighbors = neighbors.filter(function(value) {
+              if (value !== i - 40) {
+                return true;
+              } else {
+                return false;
+              }
+            })
+          }
+
+          if (i >= 1561) {
+            neighbors = neighbors.filter(function(value) {
+              if (value !== i + 40) {
+                return true;
+              } else {
+                return false;
+              }
+            })
+          }
+
+          if (i === 1) {
+            neighbors = neighbors.filter(function(value) {
+              if (value !== i - 1) {
+                return true;
+              } else {
+                return false;
+              }
+            })
+          }
+
+          if ((i - 1) % 40 === 0) {
+            neighbors = neighbors.filter(function(value) {
+              if (value !== i - 1) {
+                return true;
+              } else {
+                return false;
+              }
+            })
+          }
+
+          if (i % 40 === 0) {
+            neighbors = neighbors.filter(function(value) {
+              if (value !== i + 1) {
+                return true;
+              } else {
+                return false;
+              }
+            })
+          }
+
+          neighbors.forEach(function(cell) {
+            if (document.getElementById(cell).classList.contains('clicked') && !current.classList.contains('clicked')) {
+              current.classList.add("clicked");
+              hits++;
+              console.log('hit');
+            } 
+          })
+
+
+        }
+
+      }
+
+    }
+
+    }
   }
 
   handleRestart = () => {
