@@ -9,8 +9,12 @@ class App extends Component {
   }
 
   handleClick(event) {
-    event.target.classList.remove("unclicked"); 
-    event.target.classList.add("clicked");    
+    let clicked = event.target;
+    if (clicked.classList.contains('unclicked')) {
+      clicked.classList.remove("unclicked"); 
+      clicked.classList.add("clicked");
+      clicked.append(clicked.value);
+    }  
   }
 
   handleRestart = () => {
@@ -90,6 +94,23 @@ class App extends Component {
       })
       
       current.value = count;
+
+      switch(count) {
+        case 0:
+          current.value = "";
+          break;
+        case 1:
+          current.classList.add('blue');
+          break;
+        case 2:
+          current.classList.add('green');
+          break;
+        case 3:
+          current.classList.add('red');
+          break;
+        default:
+          break;
+      }
     }
 
   }

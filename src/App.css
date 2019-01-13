@@ -4,32 +4,23 @@ body {
 }
 
 .cell {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
+  display: inline-block;  
+  width: 30px;
+  height: 30px;
   border: 1px solid black;
   box-sizing: border-box;
-}
-
-.alive.green {
-  background-color: green;
-}
-
-.alive.red {
-  background-color: #DC143C;
-}
-
-.alive.blue {
-  background-color: blue;
+  padding: 6.5px;
 }
 
 .boundary {
-  width: 1000px;
+  width: 1200px;
   background-color: grey;
 }
 
 * {
   margin-bottom: -5px;
+  text-align: center;
+  font-weight: bold;
 }
 
 .clicked {
@@ -40,22 +31,7 @@ body {
   background-color: #DC143C;
 }
 
-button {
-  margin-top: 20px;
-  display: inline-block;
-  position: relative;
-  background-color: black;
-  color: white;
-  height: 70px;
-  width: 250px;
-  font-size: 3em;
-  margin: 0 auto;
-  margin-top: 10px;
-  margin-left: 15px;
-  margin-right: 15px;
-  margin-bottom: 15px;
-  border-radius: 2%;
-}
+
 
 h1 {
   text-align: center;
@@ -65,35 +41,14 @@ h1 {
   margin: 0 auto;
 }
 
-.speed {
-  margin: 0 auto;
-  display: block;
-  position: relative;
-  text-align: center;
+.blue {
+  color: blue
 }
 
-#restart {
-  background-color: blue;
+.green {
+  color: green;
 }
 
-#faster {
-  background-color: green
-}
-
-#slower {
-  background-color: #DC143C
-}
-
-#pause {
-  background-color: blue;
-}
-
-.info {
-  background-color: black;
-  position: relative;
-  display: block;
-  color: lightgray;
-  width: 1000px;
-  margin: 0 auto;
-  top: -20px;
+.red {
+  color:red;
 }
