@@ -1,0 +1,124 @@
+import React, { Component } from 'react';
+import './App.css';
+
+class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(event) {
+    event.target.classList.remove("unclicked"); 
+    event.target.classList.add("clicked");    
+  }
+
+  handleRestart = () => {
+    window.location.reload();
+  }
+
+  componentDidMount() {
+
+    for (let i = 1; i < 1601; i++) {
+      let count = 0;
+      let current = document.getElementById(i);
+      let neighbors = [
+        i - 40,
+        i - (39),
+        i - (41),
+        i + 1,
+        i - 1,
+        i + 40,
+        i + 39,
+        i + 41];
+
+      if (i <= 40) {
+        neighbors = neighbors.filter(function(value) {
+          if (value !== i - 40 && value !== i - 39 && value !== i - 41) {
+            return true;
+          } else {
+            return false;
+          }
+        })
+      }
+
+      if (i >= 1561) {
+        neighbors = neighbors.filter(function(value) {
+          if (value !== i + 40 && value !== i + 39 && value !== i + 41) {
+            return true;
+          } else {
+            return false;
+          }
+        })
+      }
+
+      if (i === 1) {
+        neighbors = neighbors.filter(function(value) {
+          if (value !== i - 1) {
+            return true;
+          } else {
+            return false;
+          }
+        })
+      }
+
+      if ((i - 1) % 40 === 0) {
+        neighbors = neighbors.filter(function(value) {
+          if (value !== i - 1 && value !== i - 41 && value !== i + 39) {
+            return true;
+          } else {
+            return false;
+          }
+        })
+      }
+
+      if (i % 40 === 0) {
+        neighbors = neighbors.filter(function(value) {
+          if (value !== i + 1 && value !== i - 39 && value !== i + 41) {
+            return true;
+          } else {
+            return false;
+          }
+        })
+      }
+
+      neighbors.forEach(function(element) {
+        if (document.getElementById(element).classList.contains("bomb")) {
+          count++;
+        };
+            
+      })
+      
+      current.value = count;
+    }
+
+  }
+
+  render() {
+
+    const startGame = () => {
+
+      let arr = [];
+      for (let i = 1; i < 1601; i++) {
+        let roll = Math.random();
+        if (roll > 0.9) {
+        arr.push(<div className={"unclicked bomb cell"} key={i} onClick={this.handleClick} id={i}></div>);
+        } else {
+          arr.push(<div className={"unclicked cell"} key={i} onClick={this.handleClick} id={i}></div>);
+        } 
+      }
+      return arr;
+    }
+
+    return (
+      <div className="App">
+        <div className="boundary">
+          {startGame()}
+        </div>
+      </div>
+    );
+  }
+}
+
+export default App;
+

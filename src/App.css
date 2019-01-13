@@ -1,0 +1,99 @@
+
+body {
+  background-image: url("./light-grey-terrazzo.png");
+}
+
+.cell {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
+.alive.green {
+  background-color: green;
+}
+
+.alive.red {
+  background-color: #DC143C;
+}
+
+.alive.blue {
+  background-color: blue;
+}
+
+.boundary {
+  width: 1000px;
+  background-color: grey;
+}
+
+* {
+  margin-bottom: -5px;
+}
+
+.clicked {
+  background-color: lightgrey;
+}
+
+.bomb.clicked {
+  background-color: #DC143C;
+}
+
+button {
+  margin-top: 20px;
+  display: inline-block;
+  position: relative;
+  background-color: black;
+  color: white;
+  height: 70px;
+  width: 250px;
+  font-size: 3em;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  border-radius: 2%;
+}
+
+h1 {
+  text-align: center;
+}
+
+.boundary {
+  margin: 0 auto;
+}
+
+.speed {
+  margin: 0 auto;
+  display: block;
+  position: relative;
+  text-align: center;
+}
+
+#restart {
+  background-color: blue;
+}
+
+#faster {
+  background-color: green
+}
+
+#slower {
+  background-color: #DC143C
+}
+
+#pause {
+  background-color: blue;
+}
+
+.info {
+  background-color: black;
+  position: relative;
+  display: block;
+  color: lightgray;
+  width: 1000px;
+  margin: 0 auto;
+  top: -20px;
+}
