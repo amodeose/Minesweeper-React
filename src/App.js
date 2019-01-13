@@ -5,11 +5,35 @@ class App extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      progress: 0,
+      lose: false
+    }
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(event) {
     let clicked = event.target;
+
+    if (clicked.classList.contains('bomb')) {
+      let progress = 0;
+      for (let i = 1; i < 1601; i++) {
+        let current = document.getElementById(i);
+        if (current.classList.contains('clicked')) {
+          progress++;
+        }
+        current.parentElement.removeChild(current);
+      }
+
+      this.setState({
+        progress: Math.round((progress/1600) * 100),
+        lose: true
+      });
+
+      return;
+
+    }
+
     if (clicked.classList.contains('unclicked')) {
       clicked.classList.remove("unclicked"); 
       clicked.classList.add("clicked");
@@ -105,9 +129,6 @@ class App extends Component {
     }
   }
 
-  handleRestart = () => {
-    window.location.reload();
-  }
 
   componentDidMount() {
 
@@ -183,6 +204,10 @@ class App extends Component {
       
       current.value = count;
 
+      if (current.classList.contains('bomb')) {
+        current.value = "";
+      }
+
       switch(count) {
         case 0:
           current.value = "";
@@ -201,6 +226,11 @@ class App extends Component {
       }
     }
 
+  }
+
+  
+  handleRestart = () => {
+    window.location.reload();
   }
 
   render() {
@@ -224,6 +254,10 @@ class App extends Component {
         <div className="boundary">
           {startGame()}
         </div>
+        {this.state.lose && <div id="lose">
+          <h1>You hit a bomb! You completed {this.state.progress}% of the game.</h1>
+          <button onClick={this.handleRestart}>Play Again?</button>
+        </div>}
       </div>
     );
   }
