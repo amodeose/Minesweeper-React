@@ -25,7 +25,7 @@ class App extends Component {
 
         let current = document.getElementById(i);
 
-        if (current.value == "" && !current.classList.contains("bomb")) {
+        if (!current.classList.contains("bomb")) {
 
           let neighbors = [
             i - 40,
@@ -83,11 +83,15 @@ class App extends Component {
             })
           }
 
+
           neighbors.forEach(function(cell) {
-            if (document.getElementById(cell).classList.contains('clicked') && !current.classList.contains('clicked')) {
+
+            let neighbor = document.getElementById(cell);
+            if (neighbor.classList.contains('clicked') && current.classList.contains('unclicked') && neighbor.value == "") {
               current.classList.add("clicked");
+              current.classList.remove("unclicked");
+              current.append(current.value);
               hits++;
-              console.log('hit');
             } 
           })
 
@@ -206,7 +210,7 @@ class App extends Component {
       let arr = [];
       for (let i = 1; i < 1601; i++) {
         let roll = Math.random();
-        if (roll > 0.9) {
+        if (roll > 0.87) {
         arr.push(<div className={"unclicked bomb cell"} key={i} onClick={this.handleClick} id={i}></div>);
         } else {
           arr.push(<div className={"unclicked cell"} key={i} onClick={this.handleClick} id={i}></div>);
