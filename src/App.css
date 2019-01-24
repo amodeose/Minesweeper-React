@@ -9,12 +9,14 @@ body {
   height: 30px;
   border: 1px solid black;
   box-sizing: border-box;
-  padding: 6.5px;
+  padding: 7px;
+  background-color: grey;
 }
+
 
 .boundary {
   width: 1200px;
-  background-color: grey;
+  background-color: white;
 }
 
 * {
@@ -31,6 +33,9 @@ body {
   background-color: #DC143C;
 }
 
+.unclicked:hover {
+  opacity: 0.7;
+}
 
 
 h1 {
@@ -71,4 +76,12 @@ button {
 button:hover {
   opacity: 0.85;
   border: 4px solid black;
+}
+
+p {
+  position: absolute;
+}
+
+.flag {
+  background-color: orange;
 }
